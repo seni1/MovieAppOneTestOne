@@ -10,18 +10,19 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.movieapponetestone.R;
-import com.example.android.movieapponetestone.model.popular.Result;
+import com.example.android.movieapponetestone.model.Popular;
+import com.example.android.movieapponetestone.model.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder>{
 
-    private final ArrayList<Result> modelList;
+    private final ArrayList<Popular> modelList;
     private Context context;
 
 
-    public ModelAdapter(ArrayList<Result> modelList, Context context) {
+    public ModelAdapter(ArrayList<Popular> modelList, Context context) {
         this.modelList = modelList;
         this.context = context;
     }
@@ -37,7 +38,7 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Result movies = modelList.get(position);
+        Popular movies = modelList.get(position);
         Glide.with(context).load("http://image.tmdb.org/t/p/w185" + movies.getPosterPath()).into(holder.image);
 
     }
@@ -57,7 +58,7 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.ViewHolder>{
         }
     }
 
-    public void setData(List<Result> list) {
+    public void setData(List<Popular> list) {
 
         modelList.addAll(list);
         notifyDataSetChanged();
