@@ -4,9 +4,10 @@ package com.example.android.movieapponetestone.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Popular {
+public class Popular implements Serializable {
 
     @SerializedName("vote_count")
     @Expose

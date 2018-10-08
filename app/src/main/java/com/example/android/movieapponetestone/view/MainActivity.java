@@ -14,8 +14,6 @@ import com.example.android.movieapponetestone.adapter.ModelAdapter;
 import com.example.android.movieapponetestone.api.App;
 import com.example.android.movieapponetestone.model.Popular;
 import com.example.android.movieapponetestone.model.Result;
-import com.example.android.movieapponetestone.model.popular.Popular;
-import com.example.android.movieapponetestone.model.popular.Result;
 
 import java.util.ArrayList;
 
@@ -79,7 +77,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPopular() {
 
-        App.getApi().getPopularMovies(KEY).enq;
+    App.getApi().getPopularMovies(KEY).enqueue(new Callback<Result>() {
+        @Override
+        public void onResponse(Call<Result> call, Response<Result> response) {
+            popularArrayList.clear();
+            adapter.setData(response.body().getResults());
+        }
+
+        @Override
+        public void onFailure(Call<Result> call, Throwable t) {
+
+        }
+    });
     }
 
     private void getTopRatedMovies() {
@@ -87,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
         App.getApi().getTopRatedMovies(KEY).enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
+                popularArrayList.clear();
+                adapter.setData(response.body().getResults());
 
             }
 
