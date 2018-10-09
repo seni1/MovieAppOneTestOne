@@ -56,6 +56,11 @@ public class DetailActivity extends AppCompatActivity {
     private void getData() {
         Popular data = (Popular) getIntent().getSerializableExtra(KEY);
         title.setText(data.getTitle());
+        releaseDate.setText(data.getReleaseDate());
+        synopsis.setText(data.getOverview());
+        userRating.setText(String.valueOf(data.getVoteAverage()));
+
+
         Glide.with(this).load("http://image.tmdb.org/t/p/w185" + data.getPosterPath()).into(posterImage);
     }
 
