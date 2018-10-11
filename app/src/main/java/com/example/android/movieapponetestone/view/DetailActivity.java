@@ -45,11 +45,14 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public static void newIntent(Context context, Popular popular) {
+
         Intent intent = new Intent(context, DetailActivity.class);
         Bundle bundle = new Bundle();
 
         bundle.putSerializable(KEY, popular);
         intent.putExtras(bundle);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
